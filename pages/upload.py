@@ -4,11 +4,10 @@ import numpy as np
 from collections import deque
 import os
 import base64
-from keras.models import load_model
+from tensorflow.keras.models import load_model
+from tensorflow.keras.initializers import Orthogonal
 
-import sys
-sys.stdout.reconfigure(encoding='utf-8')
-sys.stderr.reconfigure(encoding='utf-8')
+initializer = Orthogonal(gain=1.0, seed=None)
 
 
 # Load the model
