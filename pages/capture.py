@@ -8,7 +8,7 @@ import base64
 from keras.models import load_model
 
 # Load the model
-model_file_path = "C:/Users/preet/Project/Human Activity Recognition - Fight Detection/model/myharm.h5"  # Change this path accordingly
+model_file_path = "myharm.h5"  # Change this path accordingly
 convlrcn_model = load_model(model_file_path)
 
 # Define constants
