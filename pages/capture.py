@@ -47,13 +47,7 @@ class VideoTransformer(VideoTransformerBase):
 def main():
     st.title("Human Activity Prediction")
 
-    webrtc_streamer(
-    key="example",
-    video_processor_factory=VideoTransformer,
-    mode=WebRtcMode.SENDRECV, rtc_configuration=RTCConfiguration(
-					{"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
-					)
-    )
+    webrtc_ctx = webrtc_streamer(key="example", video_transformer_factory=VideoTransformer, async_transform=True)
 
 if __name__ == "__main__":
     main()
