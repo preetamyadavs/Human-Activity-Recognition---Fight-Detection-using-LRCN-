@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, webrtc_streamer, WebRtcMode, RTCConfiguration
+from streamlit_webrtc import VideoTransformerBase, webrtc_streamer, WebRtcMode, RTCConfiguration
 import cv2
 import numpy as np
 from collections import deque
@@ -47,7 +47,15 @@ class VideoTransformer(VideoTransformerBase):
 def main():
     st.title("Human Activity Prediction")
 
-    webrtc_ctx = webrtc_streamer(key="example", video_transformer_factory=VideoTransformer, async_transform=True)
+    webrtc_streamer(
+    key="example",
+    video_processor_factory=VideoTransformer,
+    mode=WebRtcMode.SENDRECV, rtc_configuration=RTCConfiguration(
+					{"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
+					)
+)
+
+
 
 if __name__ == "__main__":
     main()
